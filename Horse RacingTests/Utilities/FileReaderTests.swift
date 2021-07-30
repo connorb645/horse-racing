@@ -25,5 +25,20 @@ class FileReaderTests: XCTestCase {
             XCTFail(exception.localizedDescription)
         }
     }
+    
+    func testThrowsCorrectExceptionForFileNotFound() {
+        let bundle = Bundle.init(for: type(of: self))
+        
+        let fileReader = FileReader(inBundle: bundle)
+        
+        do {
+            let _ = try fileReader.readData(fromFile: "incorrectFileName", ofType: .json)
+            XCTFail("Text failed due to successfully reading a file which doesn't exist in the bundle.")
+        } catch FileError.noFileFoundWithName(let name) {
+            XCTAssertEqual(name, "incorrectFileName")
+        } catch {
+            XCTFail("Test failed due to incorrect exception returned.")
+        }
+    }
 
 }
