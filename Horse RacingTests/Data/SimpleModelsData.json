@@ -1,0 +1,34 @@
+[
+    {
+        "name": "John Smith",
+        "address": "10 Queens Street",
+        "children":
+        [
+            {
+                "name": "Peggy Smith",
+                "address": "10 Queens Street"
+        
+            },
+            {
+                "name": "John Smith Junior",
+                "address": "10 Queens Street"
+            }
+        ]
+    },
+    {
+        "name": "John Lennon",
+        "address": "251 Menlove Avenue",
+        "children":
+        [
+            {
+                "name": "Sean Lennon",
+                "address": "251 Menlove Avenue"
+        
+            },
+            {
+                "name": "Julian Lennon",
+                "address": "251 Menlove Avenue"
+            }
+        ]
+    }
+]

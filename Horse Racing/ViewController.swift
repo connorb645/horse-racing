@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Horse Racing
 //
-//  Created by Connor Black on 30/07/2021.
+//  Created on 30/07/2021.
 //
 
 import UIKit
@@ -13,7 +13,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
 
 }
 

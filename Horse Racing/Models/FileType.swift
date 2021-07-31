@@ -2,11 +2,12 @@
 //  FileType.swift
 //  Horse Racing
 //
-//  Created by Connor Black on 30/07/2021.
+//  Created on 30/07/2021.
 //
 
 import Foundation
 
+/// Possible file types to request from FileReader.
 enum FileType: String {
     case json = "json"
 }

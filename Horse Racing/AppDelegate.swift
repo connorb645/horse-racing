@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Horse Racing
 //
-//  Created by Connor Black on 30/07/2021.
+//  Created on 30/07/2021.
 //
 
 import UIKit

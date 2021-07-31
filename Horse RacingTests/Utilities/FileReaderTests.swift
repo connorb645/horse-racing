@@ -2,21 +2,22 @@
 //  FileReaderTests.swift
 //  Horse RacingTests
 //
-//  Created by Connor Black on 30/07/2021.
+//  Created on 30/07/2021.
 //
 
 import XCTest
 @testable import Horse_Racing
 
 class FileReaderTests: XCTestCase {
-
+    
+    /// Test to ensure the FileReader is able to read json data from a file within a specified bundle.
     func testCanReadJsonFile() {
         let bundle = Bundle.init(for: type(of: self))
         
         let fileReader = FileReader(inBundle: bundle)
         
         do {
-            let data = try fileReader.readData(fromFile: "testData", ofType: .json)
+            let data = try fileReader.readData(fromFile: "SimpleDataStructureData")
             
             XCTAssertNotNil(data)
             XCTAssertFalse(data.isEmpty)
@@ -26,6 +27,8 @@ class FileReaderTests: XCTestCase {
         }
     }
     
+    
+    /// Test to ensure that the correct FileError is thrown when a file which doesn't exist is requested.
     func testThrowsCorrectExceptionForFileNotFound() {
         let bundle = Bundle.init(for: type(of: self))
         
