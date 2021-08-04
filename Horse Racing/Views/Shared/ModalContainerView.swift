@@ -9,6 +9,7 @@ import UIKit
 
 class ModalContainerView: UIView {
     
+    /// The container view which will host the provided view controller
     lazy private var containerView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -17,6 +18,7 @@ class ModalContainerView: UIView {
         return view
     }()
     
+    /// The backdrop view which will dim out content in the background
     lazy private var dimmedView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
@@ -75,6 +77,8 @@ class ModalContainerView: UIView {
         backgroundColor = .clear
     }
     
+    /// Configure the constraints and reside the container view top constraint and bottom constraint ready for manipulation.
+    /// - Parameter childViewController: The view controller to be displayed within the bottom sheet container
     func configureConstraints(childViewController: UIViewController) {
         addSubview(dimmedView)
         addSubview(containerView)
@@ -129,22 +133,22 @@ class ModalContainerView: UIView {
             }
             else if newHeight < defaultHeight {
                 // If the height is still below the default height, set it back to the default height, with an animation
-                animateContainerHeight(defaultHeight)
+                animateContainer(toHeight: defaultHeight)
             }
             else if newHeight < maximumContainerHeight && isDraggingDown {
                 // If the height is below the maximum and we are dragging down, set to the default height, with an animation
-                animateContainerHeight(defaultHeight)
+                animateContainer(toHeight: defaultHeight)
             }
             else if newHeight > defaultHeight && !isDraggingDown {
                 // If the height is below the maximum and we are dragging up, set to the max height, with an animation
-                animateContainerHeight(maximumContainerHeight)
+                animateContainer(toHeight: maximumContainerHeight)
             }
         default:
             break
         }
     }
     
-    func animateContainerHeight(_ height: CGFloat) {
+    func animateContainer(toHeight height: CGFloat) {
         UIView.animate(withDuration: 0.4) {
             self.containerViewHeightConstraint?.constant = height
             self.layoutIfNeeded()
@@ -152,6 +156,9 @@ class ModalContainerView: UIView {
         currentContainerHeight = height
     }
     
+    
+    /// This will be called from this views controlling View Controller in the viewDidAppear()
+    /// After presenting this views controlling View Controller without animation, this method will nicely transition in the relevant views.
     func animatePresentation() {
         UIView.animate(withDuration: 0.3) {
             self.containerViewBottomConstraint?.constant = 0
@@ -164,6 +171,9 @@ class ModalContainerView: UIView {
         }
     }
     
+    /// This will be triggered when the bottom sheet should dismiss.
+    /// The completion handler is required so that this views controlling View Controller can dismiss it self without animation after the relevant
+    /// views have been transitioned off-screen.
     func animateDismissal(completion: @escaping () -> ()) {
         UIView.animate(withDuration: 0.3) {
             self.containerViewBottomConstraint?.constant = self.defaultHeight

@@ -8,6 +8,19 @@
 import UIKit
 
 extension UIView {
+    /// UIView extension to make adding static anchors simpler
+    /// This function will set translatesAutoresizingMaskIntoConstraints to false on the UIView it is invoked on
+    /// - Parameters:
+    ///   - top: The top anchor
+    ///   - paddingTop: Padding from the top anchor
+    ///   - bottom: The bottom anchor
+    ///   - paddingBottom: Padding from the bottom anchor
+    ///   - left: The left anchor
+    ///   - paddingLeft: Padding from the left anchor
+    ///   - right: The right anchor
+    ///   - paddingRight: Padding from the right anchor
+    ///   - width: Width constant
+    ///   - height: Height constant
     func anchor(top: NSLayoutYAxisAnchor? = nil,
                 paddingTop: CGFloat = 0.0,
                 bottom: NSLayoutYAxisAnchor? = nil,
