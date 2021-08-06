@@ -2,7 +2,7 @@
 //  BottomSheetDataSource.swift
 //  Horse Racing
 //
-//  Created by Connor Black on 04/08/2021.
+//  Created on 04/08/2021.
 //
 
 import UIKit
